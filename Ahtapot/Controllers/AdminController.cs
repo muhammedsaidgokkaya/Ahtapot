@@ -26,7 +26,7 @@ namespace Ahtapot.Controllers
         }
         public IActionResult Profilim() 
         { 
-            return View(); 
+            return View();
         }
     }
 }
