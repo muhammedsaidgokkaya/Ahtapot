@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ahtapot.Models
 {
-    public class Ahtapot
+    public class Wiki
     {
         [Key]
         public int Id { get; set; }

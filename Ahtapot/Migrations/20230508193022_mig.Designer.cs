@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ahtapot.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230327150357_mig")]
+    [Migration("20230508193022_mig")]
     partial class mig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,36 +22,6 @@ namespace Ahtapot.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("Ahtapot.Models.Ahtapot", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FilePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("Ahtapots");
-                });
 
             modelBuilder.Entity("Ahtapot.Models.Category", b =>
                 {
@@ -145,10 +115,40 @@ namespace Ahtapot.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Ahtapot.Models.Ahtapot", b =>
+            modelBuilder.Entity("Ahtapot.Models.Wiki", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Wikis");
+                });
+
+            modelBuilder.Entity("Ahtapot.Models.Wiki", b =>
                 {
                     b.HasOne("Ahtapot.Models.Category", "Category")
-                        .WithMany("Ahtapots")
+                        .WithMany("Wikis")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -158,7 +158,7 @@ namespace Ahtapot.Migrations
 
             modelBuilder.Entity("Ahtapot.Models.Category", b =>
                 {
-                    b.Navigation("Ahtapots");
+                    b.Navigation("Wikis");
                 });
 #pragma warning restore 612, 618
         }

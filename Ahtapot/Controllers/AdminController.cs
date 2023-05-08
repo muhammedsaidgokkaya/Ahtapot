@@ -23,6 +23,18 @@ namespace Ahtapot.Controllers
 
         public IActionResult Home()
         {
+            var users = User.Identity.Name;
+            var userid = c.Users.Where(x => x.UserName == users).Select(y => y.Id).FirstOrDefault();
+            var usernamesurname = c.Users.Where(x => x.UserName == users).Select(y => y.UserName).FirstOrDefault();
+            var userSayisi = c.Users.Count().ToString();
+            var uyeidleri = c.Users.Select(y => y.Id).ToList();
+            var telefon = c.Iletisims.FirstOrDefault();
+
+            ViewBag.Number = telefon.Number;
+            ViewBag.Faks = telefon.Faks;
+            ViewBag.kullaniciMail = users;
+            ViewBag.adsoyad = usernamesurname;
+            ViewBag.userSayisi = userSayisi;
             return View();
         }
 
@@ -131,20 +143,20 @@ namespace Ahtapot.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> IcerikEkle(Models.Ahtapot ahtapot)
+        public async Task<IActionResult> IcerikEkle(Wiki wiki)
         {
             if (ModelState.IsValid)
             {
                 string wwwRootPath = _webHost.WebRootPath;
-                string filename = Path.GetFileNameWithoutExtension(ahtapot.File.FileName);
-                string extension = Path.GetExtension(ahtapot.File.FileName);
-                ahtapot.FilePath = filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
+                string filename = Path.GetFileNameWithoutExtension(wiki.File.FileName);
+                string extension = Path.GetExtension(wiki.File.FileName);
+                wiki.FilePath = filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
                 string path = Path.Combine(wwwRootPath + "/Resimler/Blog/", filename);
                 using (var filestream = new FileStream(path, FileMode.Create))
                 {
-                    await ahtapot.File.CopyToAsync(filestream);
+                    await wiki.File.CopyToAsync(filestream);
                 }
-                c.Ahtapots.Add(ahtapot);
+                c.Wikis.Add(wiki);
                 c.SaveChanges();
             }
             return RedirectToAction("IcerikEkle", "Admin");
@@ -160,24 +172,25 @@ namespace Ahtapot.Controllers
                                                      Value = x.Id.ToString()
                                                  }).ToList();
             ViewBag.Category = CategoryList;
-            var guncelle = c.Ahtapots.Find(id);
+            var guncelle = c.Wikis.Find(id);
             return View(guncelle);
         }
+
         [HttpPost]
-        public async Task<IActionResult> IcerikDuzenle(Models.Ahtapot ahtapot)
+        public async Task<IActionResult> IcerikDuzenle(Wiki wiki)
         {
             if (ModelState.IsValid)
             {
                 string wwwRootPath = _webHost.WebRootPath;
-                string filename = Path.GetFileNameWithoutExtension(ahtapot.File.FileName);
-                string extension = Path.GetExtension(ahtapot.File.FileName);
-                ahtapot.FilePath = filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
+                string filename = Path.GetFileNameWithoutExtension(wiki.File.FileName);
+                string extension = Path.GetExtension(wiki.File.FileName);
+                wiki.FilePath = filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
                 string path = Path.Combine(wwwRootPath + "/Resimler/Blog/", filename);
                 using (var filestream = new FileStream(path, FileMode.Create))
                 {
-                    await ahtapot.File.CopyToAsync(filestream);
+                    await wiki.File.CopyToAsync(filestream);
                 }
-                c.Ahtapots.Update(ahtapot);
+                c.Wikis.Update(wiki);
                 c.SaveChanges();
             }
             return RedirectToAction("IcerikEkle", "Admin");
@@ -185,15 +198,24 @@ namespace Ahtapot.Controllers
 
         public IActionResult IcerikSil(int id)
         {
-            var sil = c.Ahtapots.Find(id);
-            c.Ahtapots.Remove(sil);
+            var sil = c.Wikis.Find(id);
+            c.Wikis.Remove(sil);
             c.SaveChanges();
             return RedirectToAction("IcerikEkle", "Admin");
         }
 
-        public IActionResult Profilim() 
-        { 
-            return View();
+        public IActionResult Profilim(int id)
+        {
+            var guncelle = c.Users.Find(id);
+            return View(guncelle);
+        }
+
+        [HttpPost]
+        public IActionResult Profilim(User user)
+        {
+            c.Users.Update(user);
+            c.SaveChanges();
+            return RedirectToAction("Home", "Admin");
         }
 
         public async Task<IActionResult> LogOut()

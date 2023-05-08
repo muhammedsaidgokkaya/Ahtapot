@@ -24,8 +24,8 @@
                 <tr>
                     <td>@i.Id</td>
                     <td>@i.Name</td>
-                    <td><a asp-action="HaberUpdate" asp-controller="Admin" asp-route-id="@i.Id" class="edit-button btn btn-warning btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">Düzenle</a></td>
-                    <td><a asp-action="HaberDelete" asp-controller="Admin" asp-route-id="@i.Id" class="delete-button btn btn-danger btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">Sil</a></td>
+                    <td><a asp-action="KategoriDuzenle" asp-controller="Admin" asp-route-id="@i.Id" class="edit-button btn btn-warning btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">Düzenle</a></td>
+                    <td><a asp-action="KategoriSil" asp-controller="Admin" asp-route-id="@i.Id" class="delete-button btn btn-danger btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">Sil</a></td>
                 </tr>
             }
         </tbody>

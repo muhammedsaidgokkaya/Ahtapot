@@ -1,0 +1,38 @@
+﻿﻿@using Ahtapot.Models
+@model List<Wiki>
+
+<div class="datatables-header-footer-wrapper mt-2">
+    <div class="datatable-header">
+        <div class="row align-items-center mb-3">
+            <div class="col-12 col-lg-auto mb-3 mb-lg-0">
+                <button id="hideshow" class="btn btn-primary btn-md font-weight-semibold btn-py-2 px-4">+ Ekle</button>
+            </div>
+        </div>
+    </div>
+    <table class="table table-ecommerce-simple table-striped mb-0" id="datatable-ecommerce-list" style="min-width: 550px;">
+        <thead>
+            <tr>
+                <th hidden>ID</th>
+                <th>Konu Başlığı</th>
+                <th>İçerik</th>
+                <th>Kategori Numarası</th>
+                <th>Düzenle</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in Model)
+            {
+                <tr>
+                    <td hidden>@i.Id</td>
+                    <td>@i.Name</td>
+                    <td>@i.Description</td>
+                    <td>@i.CategoryId</td>
+                    <td><a asp-action="IcerikDuzenle" asp-controller="Admin" asp-route-id="@i.Id" class="edit-button btn btn-warning btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">Düzenle</a></td>
+                    <td><a asp-action="IcerikSil" asp-controller="Admin" asp-route-id="@i.Id" class="delete-button btn btn-danger btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">Sil</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+ <hr class="solid mt-5 opacity-4">

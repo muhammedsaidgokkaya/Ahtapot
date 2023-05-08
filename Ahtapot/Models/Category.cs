@@ -8,6 +8,6 @@ namespace Ahtapot.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<Ahtapot> Ahtapots { get; set; }
+        public List<Wiki> Wikis { get; set; }
     }
 }

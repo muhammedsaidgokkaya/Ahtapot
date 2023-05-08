@@ -67,7 +67,7 @@ namespace Ahtapot.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Ahtapots",
+                name: "Wikis",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -79,9 +79,9 @@ namespace Ahtapot.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Ahtapots", x => x.Id);
+                    table.PrimaryKey("PK_Wikis", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Ahtapots_Categories_CategoryId",
+                        name: "FK_Wikis_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
@@ -89,16 +89,13 @@ namespace Ahtapot.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ahtapots_CategoryId",
-                table: "Ahtapots",
+                name: "IX_Wikis_CategoryId",
+                table: "Wikis",
                 column: "CategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Ahtapots");
-
             migrationBuilder.DropTable(
                 name: "Hakkimizdas");
 
@@ -107,6 +104,9 @@ namespace Ahtapot.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Wikis");
 
             migrationBuilder.DropTable(
                 name: "Categories");
