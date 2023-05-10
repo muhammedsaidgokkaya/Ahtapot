@@ -1,0 +1,21 @@
+﻿﻿@using Ahtapot.Models
+@model List<Iletisim>
+
+<ul class="list list-unstyled">
+	<li class="pb-1 mb-2">
+		<span class="d-block font-weight-normal line-height-1 text-color-light">ADRES</span>
+		@ViewBag.Address
+	</li>
+	<li class="pb-1 mb-2">
+		<span class="d-block font-weight-normal line-height-1 text-color-light">TELEFON</span>
+		<a href="tel:@ViewBag.Number">@ViewBag.Number</a>
+	</li>
+	<li class="pb-1 mb-2">
+		<span class="d-block font-weight-normal line-height-1 text-color-light">MAİL</span>
+		<a href="mailto:@ViewBag.Mail">@ViewBag.Mail</a>
+	</li>
+	<li class="pb-1 mb-2">
+		<span class="d-block font-weight-normal line-height-1 text-color-light">ÇALIŞMA SAATLERİMİZ</span>
+		@ViewBag.Saatler
+	</li>
+</ul>

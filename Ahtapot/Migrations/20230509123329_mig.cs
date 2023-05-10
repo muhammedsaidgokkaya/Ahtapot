@@ -28,7 +28,17 @@ namespace Ahtapot.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MisyonumuzBaslik = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MisyonumuzDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    VizyonBaslik = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    VizyonDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NedenBizBaslik = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NedenBizDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BizKimizBaslik = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BizKimizDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EkibimizBaslik = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EkibimizDescription = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,7 +54,8 @@ namespace Ahtapot.Migrations
                     Number = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Mail = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Faks = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Faks = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Saatler = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

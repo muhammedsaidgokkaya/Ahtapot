@@ -10,5 +10,6 @@ namespace Ahtapot.Models
         public string Mail { get; set; }
         public string Address { get; set; }
         public string Faks { get; set; }
+        public string Saatler { get; set; }
     }
 }

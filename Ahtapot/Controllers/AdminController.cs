@@ -46,6 +46,16 @@ namespace Ahtapot.Controllers
                 Id = hakkimizda.Id,
                 Title = hakkimizda.Title,
                 Description = hakkimizda.Description,
+                MisyonumuzBaslik = hakkimizda.MisyonumuzBaslik,
+                MisyonumuzDescription = hakkimizda.MisyonumuzDescription,
+                VizyonBaslik = hakkimizda.VizyonBaslik,
+                VizyonDescription = hakkimizda.VizyonDescription,
+                NedenBizBaslik = hakkimizda.NedenBizBaslik,
+                NedenBizDescription = hakkimizda.NedenBizDescription,
+                BizKimizBaslik = hakkimizda.BizKimizBaslik,
+                BizKimizDescription = hakkimizda.BizKimizDescription,
+                EkibimizBaslik = hakkimizda.EkibimizBaslik,
+                EkibimizDescription = hakkimizda.EkibimizDescription,
             };
             return View(dto);
         }
@@ -58,6 +68,16 @@ namespace Ahtapot.Controllers
                 Id = dto.Id,
                 Title = dto.Title,
                 Description = dto.Description,
+                MisyonumuzBaslik = dto.MisyonumuzBaslik,
+                MisyonumuzDescription = dto.MisyonumuzDescription,
+                VizyonBaslik = dto.VizyonBaslik,
+                VizyonDescription = dto.VizyonDescription,
+                NedenBizBaslik = dto.NedenBizBaslik,
+                NedenBizDescription = dto.NedenBizDescription,
+                BizKimizBaslik = dto.BizKimizBaslik,
+                BizKimizDescription = dto.BizKimizDescription,
+                EkibimizBaslik = dto.EkibimizBaslik,
+                EkibimizDescription = dto.EkibimizDescription,
             };
             c.Hakkimizdas.Update(hakkimizda);
             c.SaveChanges();
@@ -74,6 +94,7 @@ namespace Ahtapot.Controllers
                 Number = iletisim.Number,
                 Address = iletisim.Address,
                 Faks = iletisim.Faks,
+                Saatler = iletisim.Saatler,
             };
             return View(dto);
         }
@@ -88,6 +109,7 @@ namespace Ahtapot.Controllers
                 Number = dto.Number,
                 Address = dto.Address,
                 Faks = dto.Faks,
+                Saatler = dto.Saatler,
             };
             c.Iletisims.Update(iletisim);
             c.SaveChanges();
