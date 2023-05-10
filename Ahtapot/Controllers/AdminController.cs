@@ -256,6 +256,16 @@ namespace Ahtapot.Controllers
 
         public IActionResult Profilim(int id)
         {
+            var users = User.Identity.Name;
+            var userid = c.Users.Where(x => x.UserName == users).Select(y => y.Id).FirstOrDefault();
+            var usernamesurname = c.Users.Where(x => x.UserMail == users).Select(y => y.UserName).FirstOrDefault();
+            var uyeidleri = c.Users.Select(y => y.Id).ToList();
+            var pass = c.Users.Where(x => x.UserName == users).Select(y => y.UserPassword).FirstOrDefault();
+
+            ViewBag.kullaniciMail = users;
+            ViewBag.adsoyad = usernamesurname;
+            ViewBag.id = uyeidleri;
+            ViewBag.pass = pass;
             var guncelle = c.Users.Find(id);
             return View(guncelle);
         }
