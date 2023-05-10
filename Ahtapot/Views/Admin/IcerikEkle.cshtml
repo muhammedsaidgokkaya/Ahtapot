@@ -31,7 +31,7 @@
 
 										<div>
 											<div class="form-group row align-items-center mb-3">
-												<label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Kategori Numarası</label>
+												<label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Kategori</label>
 												<div class="col-lg-7 col-xl-6">
 													@Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.Category, new { @class = "form-control" })
 												</div>
@@ -51,7 +51,7 @@
 
 
 											<div class="form-group row pb-4">
-												<label class="col-lg-3 control-label text-lg-end pt-2">Resim</label>
+												<label class="col-lg-3 control-label text-lg-end pt-2">Resimler</label>
 												<div class="col-lg-6">
 													<div class="fileupload fileupload-new" data-provides="fileupload">
 														<div class="input-append">
@@ -60,9 +60,8 @@
 																<span class="fileupload-preview"></span>
 															</div>
 															<span class="btn btn-default btn-file">
-
-																<span class="fileupload-new">Select file</span>
-																<input type="file" name="File" />
+																<span class="fileupload-new">Dosyayı Seçiniz</span>
+																<input type="file" name="File" required />
 															</span>
 														</div>
 													</div>

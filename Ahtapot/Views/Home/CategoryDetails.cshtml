@@ -1,93 +1,48 @@
-﻿
+﻿@using Ahtapot.Models
+@model List<Wiki>
+
 @{
     ViewData["Title"] = "CategoryDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section class="page-header page-header-modern bg-color-light-scale-1 page-header-md ">
+	<div class="container-fluid">
+		<div class="row align-items-center">
+			<div class="col">
+				<div class="row">
+					<div class="col-md-12 align-self-center p-static order-2 text-center">
+						<div class="overflow-hidden pb-2">
+							<img alt="Porto" width="200" height="60" data-sticky-width="110" data-sticky-height="40" data-sticky-top="95" src="~/StaticFiles/General/img/123.png">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
 <section class="section border-0 m-0 pb-3">
 	<div class="container container-xl-custom">
 		<div class="row pb-1">
-
-			<div class="col-sm-6 col-lg-4 mb-4 pb-2">
-				<a href="~/blog-post.html">
-					<article>
-						<div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
-							<div class="thumb-info-wrapper thumb-info-wrapper-opacity-6">
-								<img src="~/img/blog/default/blog-46.jpg" class="img-fluid" alt="How To Take Better Concert Pictures in 30 Seconds">
-								<div class="thumb-info-title bg-transparent p-4">
-									<div class="thumb-info-inner mt-1">
-										<h2 class="text-color-light line-height-2 text-4 font-weight-bold mb-0">How To Take Better Concert Pictures in 30 Seconds</h2>
+			@foreach (var a in Model)
+			{
+				<div class="col-sm-6 col-lg-4 mb-4 pb-2">
+					<a href="~/Home/IcerikDetails/@a.Id">
+						<article>
+							<div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+								<div class="thumb-info-wrapper thumb-info-wrapper-opacity-6">
+									<img src="~/Resimler/@a.FilePath" class="img-fluid" alt="How To Take Better Concert Pictures in 30 Seconds">
+									<div class="thumb-info-title bg-transparent p-4">
+										<div class="thumb-info-inner mt-1">
+											<h2 class="text-color-light line-height-2 text-4 font-weight-bold mb-0">@a.Name</h2>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</article>
-				</a>
-			</div>
-			<div class="col-sm-6 col-lg-4 mb-4 pb-2">
-				<a href="~/blog-post.html">
-					<article>
-						<div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
-							<div class="thumb-info-wrapper thumb-info-wrapper-opacity-6">
-								<img src="~/img/blog/default/blog-46.jpg" class="img-fluid" alt="How To Take Better Concert Pictures in 30 Seconds">
-								<div class="thumb-info-title bg-transparent p-4">
-									<div class="thumb-info-inner mt-1">
-										<h2 class="text-color-light line-height-2 text-4 font-weight-bold mb-0">How To Take Better Concert Pictures in 30 Seconds</h2>
-									</div>
-								</div>
-							</div>
-						</div>
-					</article>
-				</a>
-			</div>
-			<div class="col-sm-6 col-lg-4 mb-4 pb-2">
-				<a href="~/blog-post.html">
-					<article>
-						<div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
-							<div class="thumb-info-wrapper thumb-info-wrapper-opacity-6">
-								<img src="~/img/blog/default/blog-46.jpg" class="img-fluid" alt="How To Take Better Concert Pictures in 30 Seconds">
-								<div class="thumb-info-title bg-transparent p-4">
-									<div class="thumb-info-inner mt-1">
-										<h2 class="text-color-light line-height-2 text-4 font-weight-bold mb-0">How To Take Better Concert Pictures in 30 Seconds</h2>
-									</div>
-								</div>
-							</div>
-						</div>
-					</article>
-				</a>
-			</div>
-			<div class="col-sm-6 col-lg-4 mb-4 pb-2">
-				<a href="~/blog-post.html">
-					<article>
-						<div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
-							<div class="thumb-info-wrapper thumb-info-wrapper-opacity-6">
-								<img src="~/img/blog/default/blog-46.jpg" class="img-fluid" alt="How To Take Better Concert Pictures in 30 Seconds">
-								<div class="thumb-info-title bg-transparent p-4">
-									<div class="thumb-info-inner mt-1">
-										<h2 class="text-color-light line-height-2 text-4 font-weight-bold mb-0">How To Take Better Concert Pictures in 30 Seconds</h2>
-									</div>
-								</div>
-							</div>
-						</div>
-					</article>
-				</a>
-			</div>
-			<div class="col-sm-6 col-lg-4 mb-4 pb-2">
-				<a href="~/blog-post.html">
-					<article>
-						<div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
-							<div class="thumb-info-wrapper thumb-info-wrapper-opacity-6">
-								<img src="~/img/blog/default/blog-46.jpg" class="img-fluid" alt="How To Take Better Concert Pictures in 30 Seconds">
-								<div class="thumb-info-title bg-transparent p-4">
-									<div class="thumb-info-inner mt-1">
-										<h2 class="text-color-light line-height-2 text-4 font-weight-bold mb-0">How To Take Better Concert Pictures in 30 Seconds</h2>
-									</div>
-								</div>
-							</div>
-						</div>
-					</article>
-				</a>
-			</div>
+						</article>
+					</a>
+				</div>
+			}
 		</div>
 	</div>
 </section>

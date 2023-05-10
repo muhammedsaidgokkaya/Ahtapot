@@ -4,6 +4,8 @@
 @foreach (var i in Model)
 {
     <li class="dropdown">
-        <a class="dropdown-item" href="/Home/CategoryDetails/@i.Id">@i.Name</a>
+        <a class="dropdown-item" href="/Home/CategoryDetails/@i.Id">
+            @i.Name
+        </a>
     </li>
 }

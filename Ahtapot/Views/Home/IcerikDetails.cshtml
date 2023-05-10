@@ -14,9 +14,9 @@
 				<div class="thumb-gallery-wrapper">
 					<div class="thumb-gallery-detail owl-carousel owl-theme manual nav-inside nav-style-1 nav-dark mb-3">
 						<div>
-							<img alt="" class="img-fluid" src="~/img/products/product-grey-7.jpg" data-zoom-image="~/img/products/product-grey-7.jpg">
+							<img alt="" class="img-fluid" src="~/Resimler/@Model.FilePath" data-zoom-image="~/Resimler/@Model.FilePath">
 						</div>
-						<div>
+						@*<div>
 							<img alt="" class="img-fluid" src="~/img/products/product-grey-7-2.jpg" data-zoom-image="~/img/products/product-grey-7-2.jpg">
 						</div>
 						<div>
@@ -27,7 +27,7 @@
 						</div>
 						<div>
 							<img alt="" class="img-fluid" src="~/img/products/product-grey-7-5.jpg" data-zoom-image="~/img/products/product-grey-7-5.jpg">
-						</div>
+						</div>*@
 					</div>
 				</div>
 
@@ -37,11 +37,11 @@
 
 				<div id="description" class="tabs tabs-simple tabs-simple-full-width-line tabs-product tabs-dark mb-2">
 					<ul class="nav nav-tabs justify-content-start">
-						<li class="nav-item"><a class="nav-link active font-weight-bold text-3 text-uppercase py-2 px-3" href="#productDescription" data-bs-toggle="tab">Description</a></li>
+						<li class="nav-item"><a class="nav-link active font-weight-bold text-3 text-uppercase py-2 px-3" href="#productDescription" data-bs-toggle="tab">@Model.Name</a></li>
 					</ul>
 					<div class="tab-content p-0">
 						<div class="tab-pane px-0 py-3 active" id="productDescription">
-							<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis, massa fringilla consequat blandit, mauris ligula porta nisi, non tristique enim sapien vel nisl. Suspendisse vestibulum lobortis dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis, massa fringilla consequat blandit, mauris ligula porta nisi, non tristique enim sapien vel nisl. Suspendisse vestibulum lobortis dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis, massa fringilla consequat blandit, mauris ligula porta nisi, non tristique enim sapien vel nisl. Suspendisse vestibulum lobortis dapibus. </p>
+							<p>@Model.Description</p>
 						</div>
 					</div>
 				</div>

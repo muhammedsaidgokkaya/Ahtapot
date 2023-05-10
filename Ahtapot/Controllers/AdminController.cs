@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Hosting;
 using System.Reflection.Metadata;
 using System.Security.Permissions;
 
@@ -26,7 +27,7 @@ namespace Ahtapot.Controllers
         {
             var users = User.Identity.Name;
             var userid = c.Users.Where(x => x.UserName == users).Select(y => y.Id).FirstOrDefault();
-            var usernamesurname = c.Users.Where(x => x.UserName == users).Select(y => y.UserName).FirstOrDefault();
+            var usernamesurname = c.Users.Where(x => x.UserMail == users).Select(y => y.UserName).FirstOrDefault();
             var userSayisi = c.Users.Count().ToString();
             var uyeidleri = c.Users.Select(y => y.Id).ToList();
             var telefon = c.Iletisims.FirstOrDefault();
@@ -174,7 +175,7 @@ namespace Ahtapot.Controllers
                 string filename = Path.GetFileNameWithoutExtension(wiki.File.FileName);
                 string extension = Path.GetExtension(wiki.File.FileName);
                 wiki.FilePath = filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
-                string path = Path.Combine(wwwRootPath + "/Resimler/Blog/", filename);
+                string path = Path.Combine(wwwRootPath + "/Resimler/", filename);
                 using (var filestream = new FileStream(path, FileMode.Create))
                 {
                     await wiki.File.CopyToAsync(filestream);
@@ -182,7 +183,7 @@ namespace Ahtapot.Controllers
                 c.Wikis.Add(wiki);
                 c.SaveChanges();
             }
-            return RedirectToAction("IcerikEkle", "Admin");
+            return View();
         }
 
         public IActionResult IcerikDuzenle(int id)
@@ -208,7 +209,7 @@ namespace Ahtapot.Controllers
                 string filename = Path.GetFileNameWithoutExtension(wiki.File.FileName);
                 string extension = Path.GetExtension(wiki.File.FileName);
                 wiki.FilePath = filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
-                string path = Path.Combine(wwwRootPath + "/Resimler/Blog/", filename);
+                string path = Path.Combine(wwwRootPath + "/Resimler/", filename);
                 using (var filestream = new FileStream(path, FileMode.Create))
                 {
                     await wiki.File.CopyToAsync(filestream);

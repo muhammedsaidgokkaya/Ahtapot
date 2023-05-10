@@ -52,8 +52,8 @@
 
 	<div class="body">
 		<header id="header" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyStartAt': 135, 'stickySetTop': '-135px', 'stickyChangeLogo': true}">
-			<div class="header-body header-body-bottom-border-fixed box-shadow-none border-top-0">
-				<div class="header-top header-top-small-minheight header-top-simple-border-bottom">
+			<div style="background-color: #f7f7f7;" class="header-body header-body-bottom-border-fixed box-shadow-none border-top-0">
+				<div style="background-color: white;" class="header-top header-top-small-minheight header-top-simple-border-bottom">
 					<div class="container">
 						<div class="header-row justify-content-between">
 							<div class="header-column justify-content-end col-auto px-0">
@@ -118,20 +118,20 @@
 
 												<ul class="nav nav-pills w-100" id="mainNav">
 													<li class="dropdown">
-														<a class="dropdown-item dropdown-toggle" href="~/Home/Index">
-															Ana Sayfa
+														<a class="dropdown-item" href="~/Home/Index">
+															ANA SAYFA
 														</a>
 													</li>
 
 													<li class="dropdown">
-														<a class="dropdown-item dropdown-toggle" href="~/Home/Hakkimizda">
-															Hakkımızda
+														<a class="dropdown-item" href="~/Home/Hakkimizda">
+															HAKKIMIZDA
 														</a>
 													</li>
 													
 													<li class="dropdown">
-														<a class="dropdown-item dropdown-toggle" href="~/Home/Iletisim">
-															İletişim
+														<a class="dropdown-item" href="~/Home/Iletisim">
+															İLETİŞİM
 														</a>
 													</li>
 													
@@ -167,7 +167,7 @@
 
 		<footer id="footer" class="footer-texts-more-lighten">
 			<div class="container">
-				<div class="row py-4 my-5">
+				<div class="row py-1 my-4">
 					<div class="col-md-8 col-lg-4 mb-5 mb-lg-0">
 						<h5 class="text-4 text-color-light mb-3">İLETİŞİM</h5>
 						@await Component.InvokeAsync("IletisimListele")
@@ -177,7 +177,7 @@
 						@await Component.InvokeAsync("HakkimizdaListele")
 					</div>
 
-					<div class="col-md-8 col-lg-4 mb-5 mb-lg-0 mx-auto">
+					<div class="col-md-8 col-lg-4 mb-5 mb-lg-0">
 						<h5 class="text-4 text-color-light mb-3">Kayıt Ol</h5>
 						<p class="mb-2">Yeni içerikler ekleyebilmek, sitemizi geliştirmek için, lütfen kaydolun.</p>
 						<div class="row">
@@ -191,7 +191,7 @@
 				</div>
 			</div>
 			<div class="container">
-				<div class="footer-copyright footer-copyright-style-2 pt-4 pb-5">
+				<div class="footer-copyright footer-copyright-style-2 pt-2 pb-2">
 					<div class="row align-items-center justify-content-md-between">
 						<div class="col-12 col-md-auto text-center text-md-start mb-2 mb-md-0">
 							<p class="mb-0">Ahtapot © 2023. Tüm Hakları Saklıdır</p>

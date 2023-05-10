@@ -19,6 +19,9 @@ namespace Ahtapot.Controllers
 
         public IActionResult Index()
         {
+            var list = c.WikiHomes.FirstOrDefault();
+            ViewBag.Name = list.Name.ToString();
+            ViewBag.Description = list.Description.ToString();
             return View();
         }
 
@@ -37,7 +40,6 @@ namespace Ahtapot.Controllers
 
         public IActionResult Hakkimizda()
         {
-            Context c = new Context();
             var list = c.Hakkimizdas.FirstOrDefault();
             ViewBag.Title = list.Title.ToString();
             ViewBag.Description = list.Description.ToString();
