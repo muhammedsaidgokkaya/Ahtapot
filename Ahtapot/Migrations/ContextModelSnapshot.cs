@@ -187,6 +187,27 @@ namespace Ahtapot.Migrations
                     b.ToTable("Wikis");
                 });
 
+            modelBuilder.Entity("Ahtapot.Models.WikiHome", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WikiHomes");
+                });
+
             modelBuilder.Entity("Ahtapot.Models.Wiki", b =>
                 {
                     b.HasOne("Ahtapot.Models.Category", "Category")

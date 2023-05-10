@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Reflection.Metadata;
+using System.Security.Permissions;
 
 namespace Ahtapot.Controllers
 {
@@ -224,6 +225,32 @@ namespace Ahtapot.Controllers
             c.Wikis.Remove(sil);
             c.SaveChanges();
             return RedirectToAction("IcerikEkle", "Admin");
+        }
+
+        public IActionResult HomeIcerik()
+        {
+            var home = c.WikiHomes.FirstOrDefault();
+            WikiHome dto = new WikiHome
+            {
+                Id = home.Id,
+                Name = home.Name,
+                Description = home.Description,
+            };
+            return View(dto);
+        }
+
+        [HttpPost]
+        public IActionResult HomeIcerik(WikiHome dto)
+        {
+            WikiHome home = new WikiHome
+            {
+                Id = dto.Id,
+                Name = dto.Name,
+                Description = dto.Description,
+            };
+            c.WikiHomes.Update(home);
+            c.SaveChanges();
+            return RedirectToAction("Home", "Admin");
         }
 
         public IActionResult Profilim(int id)

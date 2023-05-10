@@ -78,6 +78,20 @@ namespace Ahtapot.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "WikiHomes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WikiHomes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Wikis",
                 columns: table => new
                 {
@@ -115,6 +129,9 @@ namespace Ahtapot.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "WikiHomes");
 
             migrationBuilder.DropTable(
                 name: "Wikis");

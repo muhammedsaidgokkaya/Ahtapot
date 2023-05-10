@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ahtapot.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230509123329_mig")]
+    [Migration("20230510105036_mig")]
     partial class mig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -187,6 +187,27 @@ namespace Ahtapot.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Wikis");
+                });
+
+            modelBuilder.Entity("Ahtapot.Models.WikiHome", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WikiHomes");
                 });
 
             modelBuilder.Entity("Ahtapot.Models.Wiki", b =>

@@ -22,11 +22,6 @@ namespace Ahtapot.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         public IActionResult Kayit()
         {
             return View();
@@ -71,6 +66,19 @@ namespace Ahtapot.Controllers
             //var iletisimlistesi = iletisimmanager.GetList();
             //return View(iletisimlistesi);
             return View();
+        }
+
+        public IActionResult CategoryDetails(int id)
+        {
+            var categoryid = c.Categories.Find(id);
+            var icerikler = c.Wikis.Where(x => x.CategoryId == id).ToList();
+            return View(icerikler);
+        }
+
+        public IActionResult IcerikDetails(int? id)
+        {
+            var wiki = c.Wikis.Find(id);
+            return View(wiki);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

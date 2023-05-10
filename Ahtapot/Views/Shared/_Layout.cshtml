@@ -135,10 +135,8 @@
 														</a>
 													</li>
 													
-													<li class="dropdown">
-														<a class="dropdown-item">CategoryBaslik</a>
-													</li>
-
+													@await Component.InvokeAsync("MenuCategory")
+													
 													<li class="dropdown ms-lg-auto">
 														<a href="/Login/Index" class="dropdown-item">
 															GİRİŞ YAP

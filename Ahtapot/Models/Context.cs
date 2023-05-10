@@ -12,6 +12,7 @@ namespace Ahtapot.Models
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Wiki> Wikis { get; set; }
+        public DbSet<WikiHome> WikiHomes { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Hakkimizda> Hakkimizdas { get; set; }
         public DbSet<Iletisim> Iletisims { get; set; }
