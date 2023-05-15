@@ -60,11 +60,12 @@
                     </button>
                 </div>
             </div>
-            <script>
-                    CKEDITOR.replace("editor1");
-                    CKEDITOR.config.autoParagraph = false;
-                    CKEDITOR.instances['editor1'].setData("@Html.Raw(@Model.Description)");
-            </script>
         </form>
     </section>
 </div>
+
+<script>
+    CKEDITOR.replace("editor1");
+    CKEDITOR.config.autoParagraph = false;
+    CKEDITOR.instances['editor1'].setData("@Model.Description");
+</script>

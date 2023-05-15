@@ -1,4 +1,5 @@
-﻿
+﻿@model User
+
 @{
     ViewData["Title"] = "Home";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -17,9 +18,9 @@
                                         <div class="widget-summary">
                                             <h5 class="card-title">Profil Bilgileri</h5>
                                             <hr />
-                                            <h6 class="card-title">Ad Soyad: @ViewBag.adsoyad</h6>
+                                            <h6 class="card-title">Ad Soyad: @Model.UserName</h6>
                                             <hr />
-                                            <h6 class="card-title">E-Posta: @ViewBag.kullaniciMail</h6>
+                                            <h6 class="card-title">E-Posta: @Model.UserMail</h6>
                                             <hr />
                                             <br />
                                             <a class="nav-link" href="~/Admin/Profilim">

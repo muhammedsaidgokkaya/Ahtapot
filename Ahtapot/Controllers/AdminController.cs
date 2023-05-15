@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Hosting;
 using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
 using System.Security.Permissions;
 
 namespace Ahtapot.Controllers
@@ -25,19 +27,16 @@ namespace Ahtapot.Controllers
 
         public IActionResult Home()
         {
-            var users = User.Identity.Name;
-            var userid = c.Users.Where(x => x.UserName == users).Select(y => y.Id).FirstOrDefault();
-            var usernamesurname = c.Users.Where(x => x.UserMail == users).Select(y => y.UserName).FirstOrDefault();
-            var userSayisi = c.Users.Count().ToString();
-            var uyeidleri = c.Users.Select(y => y.Id).ToList();
+            var userid = HttpContext.Session.GetInt32("userid");
+            var userbilgi = c.Users.Where(x => x.Id == userid).FirstOrDefault();
             var telefon = c.Iletisims.FirstOrDefault();
+            var userSayisi = c.Users.Count().ToString();
 
+            ViewBag.userSayisi = userSayisi;
             ViewBag.Number = telefon.Number;
             ViewBag.Faks = telefon.Faks;
-            ViewBag.kullaniciMail = users;
-            ViewBag.adsoyad = usernamesurname;
-            ViewBag.userSayisi = userSayisi;
-            return View();
+            return View(userbilgi);
+
         }
 
         public IActionResult HakkimizdaDuzenle()
@@ -169,21 +168,18 @@ namespace Ahtapot.Controllers
         [HttpPost]
         public async Task<IActionResult> IcerikEkle(Wiki wiki)
         {
-            if (ModelState.IsValid)
+            string wwwRootPath = _webHost.WebRootPath;
+            string filename = Path.GetFileNameWithoutExtension(wiki.File.FileName);
+            string extension = Path.GetExtension(wiki.File.FileName);
+            wiki.FilePath = filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
+            string path = Path.Combine(wwwRootPath + "/Resimler/", filename);
+            using (var filestream = new FileStream(path, FileMode.Create))
             {
-                string wwwRootPath = _webHost.WebRootPath;
-                string filename = Path.GetFileNameWithoutExtension(wiki.File.FileName);
-                string extension = Path.GetExtension(wiki.File.FileName);
-                wiki.FilePath = filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
-                string path = Path.Combine(wwwRootPath + "/Resimler/", filename);
-                using (var filestream = new FileStream(path, FileMode.Create))
-                {
-                    await wiki.File.CopyToAsync(filestream);
-                }
-                c.Wikis.Add(wiki);
-                c.SaveChanges();
+                await wiki.File.CopyToAsync(filestream);
             }
-            return View();
+            c.Wikis.Add(wiki);
+            c.SaveChanges();
+            return RedirectToAction("IcerikEkle", "Admin");
         }
 
         public IActionResult IcerikDuzenle(int id)
@@ -254,28 +250,28 @@ namespace Ahtapot.Controllers
             return RedirectToAction("Home", "Admin");
         }
 
-        public IActionResult Profilim(int id)
+        public IActionResult Profilim()
         {
-            var users = User.Identity.Name;
-            var userid = c.Users.Where(x => x.UserName == users).Select(y => y.Id).FirstOrDefault();
-            var usernamesurname = c.Users.Where(x => x.UserMail == users).Select(y => y.UserName).FirstOrDefault();
-            var uyeidleri = c.Users.Select(y => y.Id).ToList();
-            var pass = c.Users.Where(x => x.UserName == users).Select(y => y.UserPassword).FirstOrDefault();
-
-            ViewBag.kullaniciMail = users;
-            ViewBag.adsoyad = usernamesurname;
-            ViewBag.id = uyeidleri;
-            ViewBag.pass = pass;
-            var guncelle = c.Users.Find(id);
-            return View(guncelle);
+           
+            var userid = HttpContext.Session.GetInt32("userid");
+            var userbilgi = c.Users.Where(x => x.Id == userid).FirstOrDefault();
+            return View(userbilgi);
         }
-
+        
         [HttpPost]
         public IActionResult Profilim(User user)
         {
-            c.Users.Update(user);
+            User us = new User
+            {
+                Id = user.Id,  
+                UserName = user.UserName,
+                UserMail = user.UserMail,
+                UserPassword = user.UserPassword
+            };
+            c.Users.Update(us);
             c.SaveChanges();
             return RedirectToAction("Home", "Admin");
+           
         }
 
         public async Task<IActionResult> LogOut()

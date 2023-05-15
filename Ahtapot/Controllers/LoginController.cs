@@ -33,6 +33,7 @@ namespace Kategori.Controllers
                 var useridentity = new ClaimsIdentity(claims, "a");
                 ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
                 await HttpContext.SignInAsync(principal);
+                HttpContext.Session.SetInt32("userid", bilgiler.Id);
                 return RedirectToAction("Home", "Admin");
 
             }

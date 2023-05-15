@@ -8,11 +8,9 @@ namespace Ahtapot.ViewComponents.AdminMailListele
         public IViewComponentResult Invoke()
         {
             Context c = new Context();
-            var usermail = User.Identity.Name;
-            var userid = c.Users.Where(x => x.UserName == usermail).Select(y => y.Id).FirstOrDefault();
-
-            ViewBag.kullaniciMail = usermail;
-            return View();
+            var userid = HttpContext.Session.GetInt32("userid");
+            var userbilgi = c.Users.Where(x => x.Id == userid).FirstOrDefault();
+            return View(userbilgi);
         }
     }
 }
